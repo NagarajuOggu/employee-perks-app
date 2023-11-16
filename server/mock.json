@@ -1,0 +1,15 @@
+{
+    "productsList": [
+        {
+            "category": "usProducts",
+            "color": "red",
+            "product": [
+                {
+                    "productName": "productName",
+                    "points": "2points",
+                    "qty": 5
+                }]
+        }
+        
+    ]
+}
