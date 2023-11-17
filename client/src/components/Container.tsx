@@ -1,5 +1,6 @@
 import Instructions from "./Instructions";
 import Products from "./products";
+import AddressForm from "./Address-form";
 
 function Container() {
   const currentDate = new Date().toLocaleDateString();
@@ -126,7 +127,7 @@ function Container() {
             <tr>
               <td className="pt-2 border min-h-fit w-1/2">
                 {" "}
-                {/* address form component */}
+                <AddressForm firstName="praveen" lastName="kappa" />
                 <div className="h-80"></div>
               </td>
               <td className="pt-2 border w-1/2">
