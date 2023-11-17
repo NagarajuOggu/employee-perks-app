@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.css-o4b71y-MuiAccordionSummary-content.Mui-expanded {
+    margin: 10px 0 !important;
+}
+
+.css-o4b71y-MuiAccordionSummary-content {
+    margin: 4px 0 !important;
+    justify-content: center;
+}
