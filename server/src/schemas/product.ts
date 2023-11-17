@@ -2,42 +2,54 @@ import mongoose, { Schema } from "mongoose";
 
 const ProductSchema: Schema = new Schema(
   {
-    productsData: {
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          category: {
-            type: "string",
-          },
-          color: {
-            type: "string",
-          },
-          product: {
-            type: "array",
-            items: [
-              {
-                type: "object",
-                properties: {
-                  productName: {
-                    type: "string",
-                  },
-                  points: {
-                    type: "string",
-                  },
-                  qty: {
-                    type: "integer",
-                  },
-                },
-                required: ["productName", "points", "qty"],
+    "productsCategories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "us-products": {
+            "type": "object",
+            "properties": {
+              "color": {
+                "type": "string"
               },
-            ],
-          },
+              "products": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "points": {
+                      "type": "string"
+                    },
+                    "availability": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "points",
+                    "availability"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "color",
+              "products"
+            ]
+          }
         },
-        required: ["category", "color", "product"],
-      },
+        "required": [
+          "us-products"
+        ]
+      }
     },
-    required: ["productsData"],
+    "required": [
+      "productsCategories"
+    ]
   },
   { timestamps: true }
 );

@@ -1,15 +1,36 @@
 {
-    "productsList": [
+    "productsCategories": [
         {
-            "category": "usProducts",
-            "color": "red",
-            "product": [
-                {
-                    "productName": "productName",
-                    "points": "2points",
-                    "qty": 5
-                }]
+            "us-products": {
+                "color": "red",
+                "products": [
+                    {
+                        "name": "productName",
+                        "points": "2",
+                        "availability": 5
+                    },
+                    {
+                        "name": "productName",
+                        "points": "2",
+                        "availability": 5
+                    }
+                ]
+            },
+            "german-products": {
+                "color": "blue",
+                "products": [
+                    {
+                        "name": "productName",
+                        "points": "2",
+                        "availability": 5
+                    },
+                    {
+                        "name": "productName",
+                        "points": "2",
+                        "availability": 5
+                    }
+                ]
+            }
         }
-        
     ]
 }
