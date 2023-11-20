@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ProductDetails from "./ProductDetail";
+import { get } from "../axios";
 
 const mockData = {
   productsList: [
@@ -72,14 +73,25 @@ const mockData = {
 };
 
 const Products = () => {
-  const [products,setProducts]=useState(mockData.productsList)
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+     get("products/getAllProducts").then((resp)=>{
+      setProducts(resp.data.productsCategories as any);
+    });
+  }, []);
   return (
-  <>
-      {products?.map((product: any, i: number) => {
-        return <ProductDetails item={product} key={i} />
-      })
-    }
-  </>
+    <>
+      <div className="border bg-gray-100">
+        {products &&
+          Object.entries(products).map(([category,product],i)=>{
+            return (
+              <ProductDetails category={category} item={product} key={i} setProducts={setProducts} />
+            );
+          })
+        }    
+      </div>
+    </>
   );
 };
 
