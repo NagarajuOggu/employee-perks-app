@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import mongoose from "mongoose";
 import productRoute from "./routes/product";
 import userRoute from "./routes/user";
+import ordersDetailsRoute from "./routes/order_details.controller";
 var bodyParser = require("body-parser");
 const app: Express = express();
 const PORT: string | number = process.env.PORT || 4000;
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 });
 app.use("/users", userRoute);
 app.use("/products", productRoute);
+app.use("/orders", ordersDetailsRoute);
 
 mongoose.set("strictQuery", false);
 
@@ -39,7 +41,7 @@ mongoose
     },
     (err) => {
       /** handle initial connection error */
-      console.log(err)
+      console.log(err);
     }
   );
 

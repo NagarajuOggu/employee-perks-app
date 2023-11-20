@@ -34,3 +34,53 @@
         }
     ]
 }
+
+{
+    "order_details": {
+        "first_name": "Nagaraju",
+        "last_name": "Oggu",
+        "role": "Admin",
+        "total-EPP-month": 50,
+        "address": {
+            "country": "US",
+            "phone": "4545454534",
+            "address1": "abcd",
+            "address2": "abcd",
+            "zipcode": "abcd",
+            "city": "abcd",
+            "statecode": "abcd"
+        },
+        "EPP": [
+            {
+                "month": "January",
+                "points": "40",
+                "purchased-products": {
+                    "category": "redefined",
+                    "color": "blue",
+                    "products": [
+                        {
+                            "name": "productName",
+                            "points": "2",
+                            "purchased_qty": 5
+                        }
+                    ]
+                }
+            },
+            {
+                "month": "Febraury",
+                "points": "40",
+                "purchased-products": {
+                    "category": "redefined",
+                    "color": "blue",
+                    "products": [
+                        {
+                            "name": "productName",
+                            "points": "2",
+                            "purchased_qty": 5
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

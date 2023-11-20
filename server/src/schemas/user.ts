@@ -10,9 +10,13 @@ const UserSchema: Schema = new Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
-const userModal = mongoose.model("User", UserSchema);
+const userModel = mongoose.model("User", UserSchema);
 
-export default userModal;
+export default userModel;
