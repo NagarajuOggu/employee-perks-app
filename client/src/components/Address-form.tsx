@@ -72,7 +72,7 @@ function AddressForm(props: any) {
   ]);
 
   let validateField = (name: string, value: string | number) => {
-    let errorMsg = null;
+    let errorMsg = '';
     switch (name) {
       case "country":
         if (!value) errorMsg = "Please select Country.";
