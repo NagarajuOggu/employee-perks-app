@@ -150,12 +150,12 @@ function AddressForm(props: any) {
         <div>
           <div className="flex items-center w-full py-1">
             <label className="block w-1/2 text-right me-3" htmlFor="country">
-              Country:
+              Country :
             </label>
             <div className="w-1/2 text-left">
               <select
                 name="country"
-                className={` border-2 w-9/12 px-2 rounded border-slate-400 ${
+                className={`  w-full px-2 rounded-md border-gray-600 ${
                   formErrors.country ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -177,12 +177,12 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center w-full py-1">
             <label className="block w-1/2 text-right me-3" htmlFor="firstName">
-              First Name:
+              First Name :
             </label>
             <div className=" text-left w-1/2">
               <input
                 name="firstName"
-                className={` border-2 w-9/12 rounded px-2 border-slate-400 ${
+                className={` w-full rounded-md px-2 border-gray-600 ${
                   formErrors.firstName ? "border-red-500" : ""
                 } `}
                 value={addressForm.firstName}
@@ -199,12 +199,12 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center w-full py-1">
             <label className="block w-1/2  text-right me-3" htmlFor="lastName">
-              Last Name:
+              Last Name :
             </label>
             <div className="text-left w-1/2">
               <input
                 name="lastName"
-                className={` border-2 w-9/12 rounded px-2 border-slate-400 ${
+                className={` w-full rounded-md px-2 border-gray-600 ${
                   formErrors.lastName ? "border-red-500" : ""
                 } `}
                 value={addressForm.lastName}
@@ -221,12 +221,12 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center w-full pt-1 pb-1">
             <label className="block w-1/2 text-right me-3" htmlFor="address">
-              Address:
+              Address :
             </label>
             <div className="text-left w-1/2">
               <textarea
                 name="address"
-                className={` border-2 rounded w-9/12 px-2 border-slate-400 ${
+                className={`  rounded-md w-full px-2 border-gray-600 ${
                   formErrors.address ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -244,12 +244,12 @@ function AddressForm(props: any) {
               className="block w-1/2 text-right me-3"
               htmlFor="addressSecondLine"
             >
-              Address second line:
+              Address second line :
             </label>
             <div className=" w-1/2">
               <textarea
                 name="addressSecondLine"
-                className={` border-2 rounded w-9/12 px-2 border-slate-400 ${
+                className={`  rounded-md w-full px-2 border-gray-600 ${
                   formErrors.addressSecondLine ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -267,12 +267,12 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center w-full py-1">
             <label className="block w-1/2 text-right me-3" htmlFor="phone">
-              Phone#
+              Phone# :
             </label>
             <div className="text-left w-1/2">
               <input
                 name="phone"
-                className={` border-2 rounded w-9/12 px-2 border-slate-400 ${
+                className={`  rounded-md w-full px-2 border-gray-600 ${
                   formErrors.phone ? "border-red-500" : ""
                 } `}
                 type="text"
@@ -288,12 +288,12 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center w-full py-1">
             <label className="block w-1/2 text-right me-3" htmlFor="city">
-              City:
+              City :
             </label>
             <div className="text-left w-1/2">
               <input
                 name="city"
-                className={` border-2 rounded w-9/12 px-2 border-slate-400 ${
+                className={`  rounded-md w-full px-2 border-gray-600 ${
                   formErrors.city ? "border-red-500" : ""
                 } `}
                 type="text"
@@ -309,13 +309,13 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center w-full py-1">
             <label className="block w-1/2 text-right me-3" htmlFor="stateCode">
-              State code:
+              State code :
             </label>
             <div className="text-left w-1/2">
               <select
                 name="stateCode"
                 id="stateCode"
-                className={` border-2 rounded w-9/12 px-2 border-slate-400 ${
+                className={`  rounded-md w-full px-2 border-gray-600 ${
                   formErrors.stateCode ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -337,12 +337,12 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center  w-full py-1">
             <label className="block w-1/2 text-right me-3" htmlFor="zipCode">
-              Zip Code
+              Zip Code :
             </label>
             <div className="text-left w-1/2">
               <input
                 name="zipCode"
-                className={` border-2 rounded w-9/12 px-2 border-slate-400 ${
+                className={`  rounded-md w-full px-2 border-gray-600 ${
                   formErrors.zipCode ? "border-red-500" : ""
                 } `}
                 type="text"

@@ -38,141 +38,136 @@ function Container(props: EmployeePerks) {
         GENERAL INFORMATION
       </div>
 
-      <div className="perks-container mx-auto">
-        <table className="w-full border bg-gray-100">
-          <tbody>
-            <tr>
-              <td className="border w-1/2 box-border">
-                <div className="flex flex-row justify-end m-2 ">
-                  <label
-                    htmlFor="month"
-                    className="text-sm font-medium text-gray-600"
-                  >
-                    Month :
-                  </label>
-                  <div className="flex flex-col">
-                    <select
-                      id="month"
-                      name="month"
-                      defaultValue={"january"}
-                      className="border rounded-md w-full ml-1"
-                      value={monthSelected}
-                      onChange={handleMonthSelection}
-                    >
-                      {Object.keys(user.perks).map((key) => {
-                        return (
-                          <option value={key} key={key}>
-                            {key}
-                          </option>
-                        );
-                      })}
-                    </select>
-                    <p className="text-sm text-gray-500 mt-1 text-right mr-auto ml-1">
-                      Select a month to see available points
-                    </p>
-                  </div>
-                </div>
-              </td>
-
-              <td className="border w-1/2">
-                <div className="flex flex-row justify-center">
-                  <label
-                    htmlFor="fullName"
-                    className="text-sm font-medium text-gray-600"
-                  >
-                    Full Name :
-                  </label>
-                  <div className="flex flex-col ml-2">
-                    <p id="fullName">
-                      {user.firstName} {user.lastName} - {user.role}
-                    </p>
-                    <div className="flex flex-row justify-center items-center">
-                      <input
-                        type="checkbox"
-                        id="checkbox"
-                        name="checkbox"
-                        className="form-checkbox h-3 w-3 text-indigo-600"
-                      />
-                      <label
-                        htmlFor="checkbox"
-                        className="ml-2 text-sm text-gray-700"
-                      >
-                        Check for Admin override
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="border w-1/2">
+      <div className="container mx-auto border box-border mr-2">
+        <div className="w-full bg-gray-100 column-2">
+          <div className="row flex flex-row w-full my-1 p-4">
+            <div className="flex flex-row w-1/2 box-border">
+              <label
+                htmlFor="month"
+                className="text-sm font-medium text-gray-600 w-1/2 text-right block"
+              >
+                Month :
+              </label>
+              <div className="flex flex-col w-1/2">
+                <select
+                  id="month"
+                  name="month"
+                  defaultValue={"january"}
+                  className="border rounded-md mx-1"
+                  value={monthSelected}
+                  onChange={handleMonthSelection}
+                >
+                  {Object.keys(user.perks).map((key) => {
+                    return (
+                      <option value={key} key={key}>
+                        {key}
+                      </option>
+                    );
+                  })}
+                </select>
+                <p className="text-sm text-gray-500 mt-1 mx-1">
+                  Select a month to see available points
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-row justify-center w-1/2">
+              <label
+                htmlFor="fullName"
+                className="text-sm font-medium text-gray-600"
+              >
+                Full Name :
+              </label>
+              <div className="flex flex-col ml-2">
+                <p id="fullName">
+                  {user.firstName} {user.lastName} - {user.role}
+                </p>
                 <div className="flex flex-row justify-center items-center">
-                  <p className="text-sm font-medium text-right w-1/2">
-                    My EPP Points:
-                  </p>
-                  <p className="text-xs w-1/2 ml-1">
-                    <span className="font-bold px-1">{pointsPerMonth}</span> /{" "}
-                    <span>{user.pointsPerMonth}</span>
-                  </p>
-                </div>
-              </td>
-              <td className="border w-1/2 box-border">
-                <div className="flex flex-row w-full justify-center">
-                  <label
-                    htmlFor="location"
-                    className="text-sm font-medium text-gray-600 mb-1"
-                  >
-                    Location:
-                  </label>
-                  <div className="flex flex-col ml-1">
-                    <select
-                      className="border rounded-md w-3/4 text-sm ml-1"
-                      id="location"
-                      onChange={(e) => setShippingLocation(e.target.value)}
-                    >
-                      <option value="none"> </option>
-                      <option value="ship-to-home"> SHIP TO HOME</option>
-                    </select>
-                    <p className="text-xs ml-1 max-w-xs grow">
-                      All Employees, please choose SHIP TO HOME option
-                      <br />
-                      Choose US or Canada from contry dropdown menu
-                      <br /> and enter shipping address
-                    </p>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td className="pt-2 border min-h-fit w-1/2">
-                {shippingLocation !== "none" ? (
-                  <AddressForm
-                    firstName={user.firstName}
-                    lastName={user.lastName}
-                  />
-                ) : (
-                  <div className="h-80"></div>
-                )}
-              </td>
-              <td className="pt-2 border w-1/2 align-top">
-                <div className="flex flex-row justify-center mb-1">
-                  <label htmlFor="seat#" className="text-sm  mb-1">
-                    {" "}
-                    Seat #:
-                  </label>
                   <input
-                    type="text"
-                    name="seat"
-                    id="seat#"
-                    className="border bg-white ml-1 w-1/2"
-                    onChange={(e) => setSeat(Number(e.target.value))}
+                    type="checkbox"
+                    id="checkbox"
+                    name="checkbox"
+                    className="form-checkbox h-3 w-3 text-indigo-600"
                   />
+                  <label
+                    htmlFor="checkbox"
+                    className="ml-2 text-sm text-gray-700"
+                  >
+                    Check for Admin override
+                  </label>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+            </div>
+          </div>
+
+
+          <div className=" row w-full my-1 flex flex-row">
+            <div className="flex flex-row justify-center items-center w-1/2">
+              <p className="text-sm font-medium text-right w-1/2">
+                My EPP Points :
+              </p>
+              <p className="text-xs w-1/2 ml-1">
+                <span className="font-bold px-1">{pointsPerMonth}</span> /{" "}
+                <span>{user.pointsPerMonth}</span>
+              </p>
+            </div>
+
+            <div className="border w-1/2 box-border">
+              <div className="flex flex-row w-full justify-center">
+                <label
+                  htmlFor="location"
+                  className="text-sm font-medium text-gray-600 mb-1"
+                >
+                  Location:
+                </label>
+                <div className="flex flex-col ml-1">
+                  <select
+                    className="border rounded-md w-3/4 text-sm ml-1"
+                    id="location"
+                    onChange={(e) => setShippingLocation(e.target.value)}
+                  >
+                    <option value="none"> </option>
+                    <option value="ship-to-home"> SHIP TO HOME</option>
+                  </select>
+                  <p className="text-xs ml-1 max-w-xs grow">
+                    All Employees, please choose SHIP TO HOME option
+                    <br />
+                    Choose US or Canada from contry dropdown menu
+                    <br /> and enter shipping address
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="row flex flex-row w-full my-1">
+            <div className="pt-2 border min-h-fit w-1/2">
+              {shippingLocation !== "none" ? (
+                <AddressForm
+                  firstName={user.firstName}
+                  lastName={user.lastName}
+                />
+              ) : (
+                <div className="h-80"></div>
+              )}
+            </div>
+            <div className="pt-2 border w-1/2 align-top">
+              <div className="flex flex-row justify-center mb-1">
+                <label htmlFor="seat#" className="text-sm  mb-1">
+                  {" "}
+                  Seat #:
+                </label>
+                <input
+                  type="text"
+                  name="seat"
+                  id="seat#"
+                  className="border bg-white ml-1 w-1/2"
+                  onChange={(e) => setSeat(Number(e.target.value))}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <Instructions />
       <Products />
