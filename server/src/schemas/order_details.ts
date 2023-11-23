@@ -5,16 +5,22 @@ const OrderDetailsSchema: Schema = new Schema(
     order_details: {
       type: "object",
       properties: {
-        first_name: {
+        user_id: {
           type: "string",
         },
-        last_name: {
+        location: {
           type: "string",
         },
-        role: {
+        isAdminOverride: {
+          type: "boolean",
+        },
+        seatNumber: {
           type: "string",
         },
-        total_EPP_month: {
+        selectedMonth: {
+          type: "string",
+        },
+        totalPurchasedPoints: {
           type: "number",
         },
         address: {
@@ -53,56 +59,49 @@ const OrderDetailsSchema: Schema = new Schema(
           ],
         },
         EPP: {
-          type: "array",
-          items: {
-            type: "object",
-            properties: {
-              month: {
-                type: "string",
-              },
-              points: {
-                type: "string",
-              },
-              purchased_products: {
-                type: "object",
-                properties: {
-                  category: {
-                    type: "string",
-                  },
-                  color: {
-                    type: "string",
-                  },
-                  products: {
-                    type: "array",
-                    items: {
-                      type: "object",
-                      properties: {
-                        name: {
-                          type: "string",
-                        },
-                        points: {
-                          type: "string",
-                        },
-                        purchased_qty: {
-                          type: "number",
-                        },
+          type: "object",
+          properties: {
+            "purchased-products": {
+              type: "object",
+              properties: {
+                category: {
+                  type: "string",
+                },
+                color: {
+                  type: "string",
+                },
+                products: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      name: {
+                        type: "string",
                       },
-                      required: ["name", "points", "purchased_qty"],
+                      points: {
+                        type: "string",
+                      },
+                      purchased_qty: {
+                        type: "number",
+                      },
                     },
+                    required: ["name", "points", "purchased_qty"],
                   },
                 },
-                required: ["category", "color", "products"],
               },
+              required: ["category", "color", "products"],
             },
-            required: ["month", "points", "purchased-products"],
           },
+          required: ["purchased-products"],
         },
       },
       required: [
-        "first_name",
-        "last_name",
-        "role",
-        "total-EPP-month",
+        "user_id",
+        "location",
+        "isAdminOverride",
+        "seatNumber",
+        "selectedMonth",
+        "totalPurchasedPoints",
         "address",
         "EPP",
       ],

@@ -84,3 +84,70 @@
         ]
     }
 }
+
+
+"order_details": {
+    "user_ID":"sss",
+    "location":"office",
+    "isAdminOverride":true,
+    "seatNumber":"123",
+    "selectedMonth":"Jan",
+    "totalPurchasedPoints":30,
+    "address": {
+        "country": "US",
+        "phone": "4545454534",
+        "address1": "abcd",
+        "address2": "abcd",
+        "zipcode": "abcd",
+        "city": "abcd",
+        "statecode": "abcd"
+    },
+    "EPP": 
+        {
+            "purchased-products": {
+                "category": "redefined",
+                "color": "blue",
+                "products": [
+                    {
+                        "name": "productName",
+                        "points": "2",
+                        "purchased_qty": 5
+                    }
+                ]
+            }
+        }
+}
+
+
+{
+    "order_details": {
+        "user_id": "sss",
+        "location": "office",
+        "isAdminOverride": true,
+        "seatNumber": "123",
+        "selectedMonth": "Jan",
+        "totalPurchasedPoints": 30,
+        "address": {
+            "country": "US",
+            "phone": "4545454534",
+            "address1": "abcd",
+            "address2": "abcd",
+            "zipcode": "abcd",
+            "city": "abcd",
+            "statecode": "abcd"
+        },
+        "EPP": {
+            "purchased-products": {
+                "category": "redefined",
+                "color": "blue",
+                "products": [
+                    {
+                        "name": "productName",
+                        "points": "2",
+                        "purchased_qty": 5
+                    }
+                ]
+            }
+        }
+    }
+}
