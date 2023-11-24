@@ -3,12 +3,15 @@ import Products from "./products";
 import AddressForm from "./Address-form";
 import { EmployeePerks } from "../types/app-types";
 import { useEffect, useState } from "react";
+import { get } from "../axios";
 
 function Container(props: EmployeePerks) {
   const [pointsPerMonth, setMonthlyPoints] = useState(0);
   const [monthSelected, setMonthSelected] = useState("january");
   const [seat, setSeat] = useState(0);
   const [shippingLocation, setShippingLocation] = useState("none");
+  const [products, setProducts] = useState({});
+  const [address, setAddress] = useState({});
 
   const currentDate = new Date().toLocaleDateString();
   const { title, logo, user } = props;
@@ -21,8 +24,21 @@ function Container(props: EmployeePerks) {
 
   useEffect(() => {
     setMonthlyPoints(user.perks[monthSelected].availablePoints);
+    get("products/getAllProducts").then((resp)=>{
+      setProducts(resp.data.productsCategories as any);
+    });
   }, []);
 
+  const updateProductList = (updatedProduct,category)=>{
+    setProducts({...products,category : updatedProduct})
+  }
+  const submitOrderDetails =(event)=>{
+    event.preventDefault();
+    const inputObject = {
+      
+    }
+
+  }
   return (
     <div className="container mx-auto  border">
       <div className="flex flex-col items-center mt-8">
@@ -131,7 +147,7 @@ function Container(props: EmployeePerks) {
                   <p className="text-xs ml-1 max-w-xs grow">
                     All Employees, please choose SHIP TO HOME option
                     <br />
-                    Choose US or Canada from contry dropdown menu
+                    Choose US or Canada from country dropdown menu
                     <br /> and enter shipping address
                   </p>
                 </div>
@@ -146,6 +162,7 @@ function Container(props: EmployeePerks) {
                 <AddressForm
                   firstName={user.firstName}
                   lastName={user.lastName}
+                  setAddress ={setAddress}
                 />
               ) : (
                 <div className="h-80"></div>
@@ -160,8 +177,8 @@ function Container(props: EmployeePerks) {
                 <input
                   type="text"
                   name="seat"
-                  id="seat#"
-                  className="border bg-white ml-1 w-1/2"
+                  id="seat#" 
+                  className="border bg-white ml-1 w-1/2 px-2"
                   onChange={(e) => setSeat(Number(e.target.value))}
                 />
               </div>
@@ -170,7 +187,8 @@ function Container(props: EmployeePerks) {
         </div>
       </div>
       <Instructions />
-      <Products />
+      <Products  products = {products} setProducts={updateProductList}/>
+      <button className="w-full bg-white font-bold italic text-xl cursor-pointer" onClick={submitOrderDetails}>SUBMIT YOUR ORDER</button>
     </div>
   );
 }

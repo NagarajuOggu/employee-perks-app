@@ -139,8 +139,7 @@ function AddressForm(props: any) {
     if (Object.keys(errorsObj).length !== 0) {
       setFormErrors({ ...formErrors, ...errorsObj });
     } else {
-      //add submit logic here.
-      console.log(addressForm);
+      props.setAddress(addressForm)
     }
   };
 
@@ -155,7 +154,7 @@ function AddressForm(props: any) {
             <div className="w-1/2 text-left">
               <select
                 name="country"
-                className={`  w-full px-2 rounded-md border-gray-600 ${
+                className={`  w-full px-2 rounded-sm border bg-white ${
                   formErrors.country ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -182,7 +181,7 @@ function AddressForm(props: any) {
             <div className=" text-left w-1/2">
               <input
                 name="firstName"
-                className={` w-full rounded-md px-2 border-gray-600 ${
+                className={` w-full rounded-sm px-2 border bg-white ${
                   formErrors.firstName ? "border-red-500" : ""
                 } `}
                 value={addressForm.firstName}
@@ -204,7 +203,7 @@ function AddressForm(props: any) {
             <div className="text-left w-1/2">
               <input
                 name="lastName"
-                className={` w-full rounded-md px-2 border-gray-600 ${
+                className={` w-full rounded-sm px-2 border bg-white ${
                   formErrors.lastName ? "border-red-500" : ""
                 } `}
                 value={addressForm.lastName}
@@ -226,7 +225,7 @@ function AddressForm(props: any) {
             <div className="text-left w-1/2">
               <textarea
                 name="address"
-                className={`  rounded-md w-full px-2 border-gray-600 ${
+                className={`  rounded-sm w-full px-2 border bg-white ${
                   formErrors.address ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -249,7 +248,7 @@ function AddressForm(props: any) {
             <div className=" w-1/2">
               <textarea
                 name="addressSecondLine"
-                className={`  rounded-md w-full px-2 border-gray-600 ${
+                className={`  rounded-sm w-full px-2 border bg-white ${
                   formErrors.addressSecondLine ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -272,7 +271,7 @@ function AddressForm(props: any) {
             <div className="text-left w-1/2">
               <input
                 name="phone"
-                className={`  rounded-md w-full px-2 border-gray-600 ${
+                className={`  rounded-sm w-full px-2 border bg-white ${
                   formErrors.phone ? "border-red-500" : ""
                 } `}
                 type="text"
@@ -293,7 +292,7 @@ function AddressForm(props: any) {
             <div className="text-left w-1/2">
               <input
                 name="city"
-                className={`  rounded-md w-full px-2 border-gray-600 ${
+                className={`  rounded-sm w-full px-2 border bg-white ${
                   formErrors.city ? "border-red-500" : ""
                 } `}
                 type="text"
@@ -315,7 +314,7 @@ function AddressForm(props: any) {
               <select
                 name="stateCode"
                 id="stateCode"
-                className={`  rounded-md w-full px-2 border-gray-600 ${
+                className={`  rounded-sm w-full px-2 border bg-white ${
                   formErrors.stateCode ? "border-red-500" : ""
                 } `}
                 onChange={handleChange}
@@ -342,7 +341,7 @@ function AddressForm(props: any) {
             <div className="text-left w-1/2">
               <input
                 name="zipCode"
-                className={`  rounded-md w-full px-2 border-gray-600 ${
+                className={`  rounded-sm w-full px-2 border bg-white ${
                   formErrors.zipCode ? "border-red-500" : ""
                 } `}
                 type="text"
