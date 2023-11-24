@@ -148,7 +148,7 @@ function AddressForm(props: any) {
       <div className="w-full  mx-auto p-4 text-sm">
         <div>
           <div className="flex items-center w-full py-1">
-            <label className="block w-1/2 text-right me-3" htmlFor="country">
+            <label className="block w-1/2 text-right me-2" htmlFor="country">
               Country :
             </label>
             <div className="w-1/2 text-left">
@@ -175,7 +175,7 @@ function AddressForm(props: any) {
             </div>
           </div>
           <div className="flex items-center w-full py-1">
-            <label className="block w-1/2 text-right me-3" htmlFor="firstName">
+            <label className="block w-1/2 text-right me-2" htmlFor="firstName">
               First Name :
             </label>
             <div className=" text-left w-1/2">
@@ -197,7 +197,7 @@ function AddressForm(props: any) {
             </div>
           </div>
           <div className="flex items-center w-full py-1">
-            <label className="block w-1/2  text-right me-3" htmlFor="lastName">
+            <label className="block w-1/2  text-right me-2" htmlFor="lastName">
               Last Name :
             </label>
             <div className="text-left w-1/2">
@@ -219,7 +219,7 @@ function AddressForm(props: any) {
             </div>
           </div>
           <div className="flex items-center w-full pt-1 pb-1">
-            <label className="block w-1/2 text-right me-3" htmlFor="address">
+            <label className="block w-1/2 text-right me-2" htmlFor="address">
               Address :
             </label>
             <div className="text-left w-1/2">
@@ -240,7 +240,7 @@ function AddressForm(props: any) {
           </div>
           <div className="flex items-center w-full pb-1 pt-1">
             <label
-              className="block w-1/2 text-right me-3"
+              className="block w-1/2 text-right me-2"
               htmlFor="addressSecondLine"
             >
               Address second line :
@@ -265,7 +265,7 @@ function AddressForm(props: any) {
             </div>
           </div>
           <div className="flex items-center w-full py-1">
-            <label className="block w-1/2 text-right me-3" htmlFor="phone">
+            <label className="block w-1/2 text-right me-2" htmlFor="phone">
               Phone# :
             </label>
             <div className="text-left w-1/2">
@@ -286,7 +286,7 @@ function AddressForm(props: any) {
             </div>
           </div>
           <div className="flex items-center w-full py-1">
-            <label className="block w-1/2 text-right me-3" htmlFor="city">
+            <label className="block w-1/2 text-right me-2" htmlFor="city">
               City :
             </label>
             <div className="text-left w-1/2">
@@ -307,7 +307,7 @@ function AddressForm(props: any) {
             </div>
           </div>
           <div className="flex items-center w-full py-1">
-            <label className="block w-1/2 text-right me-3" htmlFor="stateCode">
+            <label className="block w-1/2 text-right me-2" htmlFor="stateCode">
               State code :
             </label>
             <div className="text-left w-1/2">
@@ -335,7 +335,7 @@ function AddressForm(props: any) {
             </div>
           </div>
           <div className="flex items-center  w-full py-1">
-            <label className="block w-1/2 text-right me-3" htmlFor="zipCode">
+            <label className="block w-1/2 text-right me-2" htmlFor="zipCode">
               Zip Code :
             </label>
             <div className="text-left w-1/2">

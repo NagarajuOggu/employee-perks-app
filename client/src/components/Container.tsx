@@ -24,21 +24,18 @@ function Container(props: EmployeePerks) {
 
   useEffect(() => {
     setMonthlyPoints(user.perks[monthSelected].availablePoints);
-    get("products/getAllProducts").then((resp)=>{
+    get("products/getAllProducts").then((resp) => {
       setProducts(resp.data.productsCategories as any);
     });
   }, []);
 
-  const updateProductList = (updatedProduct,category)=>{
-    setProducts({...products,category : updatedProduct})
-  }
-  const submitOrderDetails =(event)=>{
+  const updateProductList = (updatedProduct, category) => {
+    setProducts({ ...products, category: updatedProduct });
+  };
+  const submitOrderDetails = (event) => {
     event.preventDefault();
-    const inputObject = {
-      
-    }
-
-  }
+    const inputObject = {};
+  };
   return (
     <div className="container mx-auto  border">
       <div className="flex flex-col items-center mt-8">
@@ -57,10 +54,10 @@ function Container(props: EmployeePerks) {
       <div className="container mx-auto border box-border mr-2">
         <div className="w-full bg-gray-100 column-2">
           <div className="row flex flex-row w-full my-1 p-4">
-            <div className="flex flex-row w-1/2 box-border">
+            <div className="flex flex-row w-1/2 box-border pr-3.5">
               <label
                 htmlFor="month"
-                className="text-sm font-medium text-gray-600 w-1/2 text-right block"
+                className="text-sm font-medium text-gray-600 w-1/2 text-right block pr-1"
               >
                 Month :
               </label>
@@ -86,10 +83,10 @@ function Container(props: EmployeePerks) {
                 </p>
               </div>
             </div>
-            <div className="flex flex-row justify-center w-1/2">
+            <div className="flex flex-row w-1/2">
               <label
                 htmlFor="fullName"
-                className="text-sm font-medium text-gray-600"
+                className="text-sm font-medium text-gray-600 w-2/5 text-right"
               >
                 Full Name :
               </label>
@@ -115,7 +112,6 @@ function Container(props: EmployeePerks) {
             </div>
           </div>
 
-
           <div className=" row w-full my-1 flex flex-row">
             <div className="flex flex-row justify-center items-center w-1/2">
               <p className="text-sm font-medium text-right w-1/2">
@@ -128,16 +124,16 @@ function Container(props: EmployeePerks) {
             </div>
 
             <div className="border w-1/2 box-border">
-              <div className="flex flex-row w-full justify-center">
+              <div className="flex flex-row w-full pr-4">
                 <label
                   htmlFor="location"
-                  className="text-sm font-medium text-gray-600 mb-1"
+                  className="text-sm font-medium text-gray-600 mb-1 w-2/5 text-right pe-0.5"
                 >
                   Location:
                 </label>
-                <div className="flex flex-col ml-1">
+                <div className="flex flex-col">
                   <select
-                    className="border rounded-md w-3/4 text-sm ml-1"
+                    className="border rounded-md w-full text-sm ml-1"
                     id="location"
                     onChange={(e) => setShippingLocation(e.target.value)}
                   >
@@ -155,40 +151,49 @@ function Container(props: EmployeePerks) {
             </div>
           </div>
 
-
           <div className="row flex flex-row w-full my-1">
             <div className="pt-2 border min-h-fit w-1/2">
               {shippingLocation !== "none" ? (
                 <AddressForm
                   firstName={user.firstName}
                   lastName={user.lastName}
-                  setAddress ={setAddress}
+                  setAddress={setAddress}
                 />
               ) : (
                 <div className="h-80"></div>
               )}
             </div>
             <div className="pt-2 border w-1/2 align-top">
-              <div className="flex flex-row justify-center mb-1">
-                <label htmlFor="seat#" className="text-sm  mb-1">
-                  {" "}
-                  Seat #:
-                </label>
-                <input
-                  type="text"
-                  name="seat"
-                  id="seat#" 
-                  className="border bg-white ml-1 w-1/2 px-2"
-                  onChange={(e) => setSeat(Number(e.target.value))}
-                />
-              </div>
+              {shippingLocation === "none" && (
+                <div className="flex flex-row mb-1 pr-7 ">
+                  <label
+                    htmlFor="seat#"
+                    className="text-sm w-2/5 mb-1 text-right pe-0.5"
+                  >
+                    {" "}
+                    Seat #:
+                  </label>
+                  <input
+                    type="text"
+                    name="seat"
+                    id="seat#"
+                    className="border rounded-md bg-white ml-1 w-2/5"
+                    onChange={(e) => setSeat(Number(e.target.value))}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
       <Instructions />
-      <Products  products = {products} setProducts={updateProductList}/>
-      <button className="w-full bg-white font-bold italic text-xl cursor-pointer" onClick={submitOrderDetails}>SUBMIT YOUR ORDER</button>
+      <Products products={products} setProducts={updateProductList} />
+      <button
+        className="w-full bg-white font-bold italic text-xl cursor-pointer"
+        onClick={submitOrderDetails}
+      >
+        SUBMIT YOUR ORDER
+      </button>
     </div>
   );
 }
