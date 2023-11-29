@@ -4,16 +4,15 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 
-const ProductDetails = ({ item, setProducts,index, category }) => {
-
-  const changeQuantity=(value,productIndex)=>{
-    const productList = {...item,};
-   productList.products[productIndex] = {
-    ...productList.products[productIndex],
-    purchased_qty:value
-   }
-    setProducts(productList,category);
-  }
+const ProductDetails = ({ item, setProducts, index, category }) => {
+  const changeQuantity = (value, productIndex) => {
+    const productList = { ...item };
+    productList.products[productIndex] = {
+      ...productList.products[productIndex],
+      purchased_qty: value,
+    };
+    setProducts(productList, category);
+  };
   return (
     <Accordion>
       <AccordionSummary
@@ -34,13 +33,15 @@ const ProductDetails = ({ item, setProducts,index, category }) => {
               ({product.points} PTS){product.name}
             </Typography>
             <div className="flex items-end">
-              
               <input
                 type="number"
                 name="seat"
                 className="border bg-white ml-1 mt-1 w-1/2 mb-1 border-r-2 p-2"
                 //value={product.points}
-                onChange={(event)=>changeQuantity(event.target.value,index)}
+                key={productIndex}
+                onChange={(event) =>
+                  changeQuantity(event.target.value, productIndex)
+                }
               />
               <span className="pl-1">item(s)</span>
             </div>

@@ -1,8 +1,8 @@
 import Instructions from "./Instructions";
 import Products from "./products";
 import AddressForm from "./Address-form";
-import { EmployeePerks } from "../types/app-types";
-import { useEffect, useState } from "react";
+import { EmployeePerks, OrderDetails } from "../types/app-types";
+import { useEffect, useRef, useState } from "react";
 import { get } from "../axios";
 
 function Container(props: EmployeePerks) {
@@ -11,7 +11,30 @@ function Container(props: EmployeePerks) {
   const [seat, setSeat] = useState(0);
   const [shippingLocation, setShippingLocation] = useState("none");
   const [products, setProducts] = useState({});
-  const [address, setAddress] = useState({});
+  const [address, setAddress] = useState<any>({});
+  const [isAdminOverride, setIsAdminOverride] = useState<boolean>(false);
+  const [orderDetails, setOrderDetails] = useState<OrderDetails>({
+    user_ID: "",
+    location: "",
+    isAdminOverride: false,
+    seatNumber: "",
+    selectedMonth: "",
+    totalPurchasedPoints: "",
+    address: {
+      country: "",
+      firstName: "",
+      lastName: "",
+      address: "",
+      addressSecondLine: "",
+      phone: "",
+      city: "",
+      stateCode: "",
+      zipCode: "",
+    },
+    EPP: {
+      "purchased-products": {},
+    },
+  });
 
   const currentDate = new Date().toLocaleDateString();
   const { title, logo, user } = props;
@@ -22,6 +45,8 @@ function Container(props: EmployeePerks) {
     setMonthlyPoints(user.perks[event.target.value].availablePoints);
   };
 
+  const addressFormRef = useRef<any>();
+
   useEffect(() => {
     setMonthlyPoints(user.perks[monthSelected].availablePoints);
     get("products/getAllProducts").then((resp) => {
@@ -29,13 +54,43 @@ function Container(props: EmployeePerks) {
     });
   }, []);
 
-  const updateProductList = (updatedProduct, category) => {
-    setProducts({ ...products, category: updatedProduct });
+  const calcTotalPurchasedPoints = () => {
+    let purchasedPoints = 0;
+    Object.keys(products).forEach((category) => {
+      products[category].products.forEach((prod) => {
+        if (prod.purchased_qty !== undefined) {
+          purchasedPoints +=
+            parseInt(prod.points) * parseInt(prod.purchased_qty);
+        }
+      });
+    });
+    return purchasedPoints;
   };
+
+  const updateProductList = (updatedProduct, category) => {
+    setProducts({ ...products, [category]: updatedProduct });
+  };
+
   const submitOrderDetails = (event) => {
     event.preventDefault();
-    const inputObject = {};
+    const isAddressFormValid = addressFormRef.current?.formSubmit();
+    const purchasedPoints = calcTotalPurchasedPoints();
+    if (isAddressFormValid && purchasedPoints <= pointsPerMonth) {
+      const eppObj = { ...orderDetails.EPP, ["purchased-products"]: products };
+      const inputObject = {
+        ...orderDetails,
+        address: address,
+        EPP: eppObj,
+        totalPurchasedPoints: purchasedPoints.toString(),
+        selectedMonth: monthSelected,
+        location: shippingLocation,
+        seatNumber: seat.toString(),
+        isAdminOverride: isAdminOverride,
+      };
+      setOrderDetails(() => inputObject);
+    }
   };
+
   return (
     <div className="container mx-auto  border">
       <div className="flex flex-col items-center mt-8">
@@ -100,6 +155,7 @@ function Container(props: EmployeePerks) {
                     id="checkbox"
                     name="checkbox"
                     className="form-checkbox h-3 w-3 text-indigo-600"
+                    onChange={() => setIsAdminOverride(!isAdminOverride)}
                   />
                   <label
                     htmlFor="checkbox"
@@ -158,6 +214,7 @@ function Container(props: EmployeePerks) {
                   firstName={user.firstName}
                   lastName={user.lastName}
                   setAddress={setAddress}
+                  ref={addressFormRef}
                 />
               ) : (
                 <div className="h-80"></div>

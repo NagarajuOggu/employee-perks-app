@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 
 interface AddressForm {
   country: string;
@@ -8,9 +8,8 @@ interface AddressForm {
   addressSecondLine: string;
   phone: string;
   city: string;
-  stateCode: number;
-  zipCode: number;
-  [key: string]: string | number;
+  stateCode: string;
+  zipCode: string;
 }
 
 interface FormErrors {
@@ -22,10 +21,10 @@ interface FormErrors {
   phone: string | null;
   city: string | null;
   stateCode: string | null;
-  zipCode: number | null;
+  zipCode: string | null;
 }
 
-function AddressForm(props: any) {
+const AddressForm = forwardRef((props: any, ref) => {
   const [addressForm, setAddressForm] = useState<AddressForm>({
     country: "",
     firstName: "",
@@ -34,8 +33,8 @@ function AddressForm(props: any) {
     addressSecondLine: "",
     phone: "",
     city: "",
-    stateCode: 0,
-    zipCode: 0,
+    stateCode: "",
+    zipCode: "",
   });
 
   const [formErrors, setFormErrors] = useState<FormErrors>({
@@ -50,15 +49,18 @@ function AddressForm(props: any) {
     zipCode: null,
   });
 
-  useEffect(
-    () =>
-      setAddressForm({
-        ...addressForm,
-        firstName: props.firstName ? props.firstName : "",
-        lastName: props.lastName ? props.lastName : "",
-      }),
-    []
-  );
+  useEffect(() => {
+    setAddressForm({
+      ...addressForm,
+      firstName: props.firstName ? props.firstName : "",
+      lastName: props.lastName ? props.lastName : "",
+    });
+    props.setAddress({
+      ...addressForm,
+      firstName: props.firstName ? props.firstName : "",
+      lastName: props.lastName ? props.lastName : "",
+    });
+  }, []);
   const [countries, setCountries] = useState([
     { value: "india", label: "India" },
     { value: "us", label: "US" },
@@ -110,14 +112,11 @@ function AddressForm(props: any) {
   let handleChange = (e: any) => {
     const { name } = e.target;
     let { value } = e.target;
-    if (name === "zipCode") {
-      value = parseInt(value);
-    }
-    console.log(e);
     setAddressForm({
       ...addressForm,
       [name]: value,
     });
+    props.setAddress(addressForm);
     const errorMessage = validateField(name, value);
     setFormErrors({ ...formErrors, [name]: errorMessage });
   };
@@ -138,10 +137,15 @@ function AddressForm(props: any) {
     let errorsObj = validateForm();
     if (Object.keys(errorsObj).length !== 0) {
       setFormErrors({ ...formErrors, ...errorsObj });
+      return false;
     } else {
-      props.setAddress(addressForm)
+      return true;
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    formSubmit,
+  }));
 
   return (
     <>
@@ -359,6 +363,6 @@ function AddressForm(props: any) {
       </div>
     </>
   );
-}
+});
 
 export default AddressForm;
